@@ -16,6 +16,6 @@ def index():
 def signup():
     form = form2.SignupForm()
     if form.validate_on_submit():
-        flash('Signup requested for {}'.format(form2.name.data))
+        flash('Signup requested for {}'.format(form.name.data))
         return redirect(url_for('index'))
     return render_template('signup.html', form=form)
