@@ -9,7 +9,7 @@ app.config.from_object(DevConfig)
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('IndEx2_17087024.html')
+    return render_template('index.html')
 
 
 @app.route('/signup', methods=['POST', 'GET'])
