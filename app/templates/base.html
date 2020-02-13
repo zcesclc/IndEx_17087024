@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{{ title }}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+<nav class="jumbotron text-center">
+    <h3>Rainforecast</h3>
+    <ul class="navbar navbar-light bg-light">
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('main.index') }}">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('main.signup') }}">Sign up</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('main.users') }}">Users</a>
+        </li>
+    </ul>
+
+</nav>
+<br>
+<div role=main class="container">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="alert-warning list-unstyled">
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    {% block content %}
+    {# Child pages add page specific content here #}
+    {% endblock %}
+</div>
+</body>
+</html>
