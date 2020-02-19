@@ -3,9 +3,10 @@ from sqlalchemy.exc import IntegrityError
 
 from app import db
 from app.main.forms import SignupForm
-from app.models import User, City
+from app.models import User, City, Forecast
 
 bp_main = Blueprint('main', __name__)
+
 
 
 @bp_main.route('/')
@@ -43,7 +44,7 @@ def search():
         if term == "":
             flash("Enter a name to search for")
             return redirect('/')
-        results = City.query.filter(City.name.contains(term)).all()
+        results = City.query.join(Forecast).with_entities(City.name, Forecast.comment).filter(City.name.contains(term)).all()
         if not results:
             flash("No forecast found with that city.")
             return redirect('/')

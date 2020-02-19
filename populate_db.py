@@ -11,16 +11,17 @@ def populate_db():
         c2 = City(name='Macau')
         c3 = City(name='Paris')
 
-        f1 = Forecast(datetime='datetime', comment='Sunny')
-        f2 = Forecast(datetime='datetime', comment='Rain')
-        f3 = Forecast(datetime='datetime', comment='Storm')
+        f1 = Forecast(datetime='datetime', comment='Sunny', user_id=1, city_id=1)
+        f2 = Forecast(datetime='datetime', comment='Rain', user_id=2, city_id=2)
+        f3 = Forecast(datetime='datetime', comment='Storm', user_id=3, city_id=3)
 
         db.session.add_all([u1, u2, u3])
         db.session.add_all([c1, c2, c3])
         db.session.add_all([f1, f2, f3])
 
-        c1.forecast.append(f1)
-        c2.forecast.append(f2)
-        c3.forecast.append(f3)
+
+        c1.forecasts.append(f1)
+
+
 
         db.session.commit()

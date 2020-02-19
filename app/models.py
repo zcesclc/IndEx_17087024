@@ -25,7 +25,7 @@ class City(db.Model):
     __tablename__ = 'City'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Text, nullable=False)
-    forecast = db.relationship("Forecast", backref = 'cities')
+    forecasts = db.relationship("Forecast", backref='cities')
 
 class Forecast(db.Model):
     __tablename__ = 'Forecast'
