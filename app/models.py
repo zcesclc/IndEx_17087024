@@ -32,6 +32,7 @@ class Forecast(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     datetime = db.Column(db.Text, nullable=False)
     comment = db.Column(db.Text, nullable=False)
+    forecast = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('User.id'), nullable=False)
     city_id = db.Column(db.Integer, db.ForeignKey('City.id'), nullable=False)
 
